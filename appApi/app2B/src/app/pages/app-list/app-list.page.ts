@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-app-list',
@@ -9,23 +10,23 @@ import { ApiService } from '../../services/api.service';
 export class AppListPage implements OnInit {
   bookList: { title: string; image: string }[] = [];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private firestore: Firestore) {}
 
   ngOnInit() {
     this.loadBooks();
   }
 
-  // Obtener libros de la API de Gutendex y combinar con imágenes
-  loadBooks() {
-    this.bookList = []; // Vaciar la lista de libros antes de llenarla
 
-    // Obtener los libros desde la API de Gutendex
+  loadBooks() {
+    this.bookList = []; 
+
+   
     this.apiService.getBooks().subscribe((response) => {
       const books = response.results;
 
-      // Para cada libro, obtener la imagen (perrito o robot)
+     
       books.forEach((book: { title: any; }, index: any) => {
-        const isDogImage = Math.random() > 0.5; // Decide aleatoriamente entre perro o robot
+        const isDogImage = Math.random() > 0.5; 
         const title = book.title;
 
         if (isDogImage) {
@@ -39,6 +40,16 @@ export class AppListPage implements OnInit {
           });
         }
       });
+    });
+  }
+
+
+  saveBook(book: { title: string; image: string }) {
+    const booksCollection = collection(this.firestore, 'books');
+    addDoc(booksCollection, book).then(() => {
+      console.log('Book added to Firestore');
+    }).catch((error) => {
+      console.error('Error adding book: ', error);
     });
   }
 }
