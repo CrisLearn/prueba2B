@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Libros y Perros/Robots</ion-title>
+    <ion-title>Libros con Perros o Robots</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,14 +8,9 @@
   <ion-list>
     <ion-item *ngFor="let book of bookList">
       <ion-thumbnail slot="start">
-        <img [src]="book.image" alt="Image of {{ book.title }}" />
+        <img [src]="book.image" alt="Imagen de libro o mascota" />
       </ion-thumbnail>
-      <ion-label>
-        <h2>{{ book.title }}</h2>
-      </ion-label>
+      <ion-label>{{ book.title }}</ion-label>
     </ion-item>
   </ion-list>
-  <ion-button expand="full" (click)="loadBooks()">
-    Recargar Lista
-  </ion-button>
 </ion-content>
