@@ -2,11 +2,26 @@
   "name": "app2b",
   "version": "1.0.0",
   "main": "karma.conf.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/fire": "^18.0.1",
+    "@angular/forms": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "@angular/router": "^19.0.0",
+    "@capacitor/storage": "^1.2.5",
+    "@ionic/angular": "^8.4.0",
+    "firebase": "^10.14.1",
+    "http": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.0.1",
+    "typescript": "^5.7.2"
+  }
 }
