@@ -1,13 +1,21 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'https://dog.ceo/api/breed/Affenpinsher/images/random';
-  constructor(private http: HttpClient) { 
-    getPokemon(name: string): Observable<any> {
-      return this.http.get<any>(`${this.baseUrl}${name}`);
+  private dogUrl = 'https://dog.ceo/api/breed/affenpinscher/images/random';
+  private robotUrl = 'https://robohash.org';
+
+  constructor(private http: HttpClient) {}
+
+  getRandomDogImage(): Observable<any> {
+    return this.http.get<any>(this.dogUrl);
+  }
+
+  getRandomRobotImage(identifier: string): Observable<Blob> {
+    return this.http.get(`${this.robotUrl}/${identifier}`, { responseType: 'blob' });
   }
 }
