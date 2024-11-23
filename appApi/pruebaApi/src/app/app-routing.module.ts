@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'consumo-api',
+    loadChildren: () => import('./pages/consumo-api/consumo-api.module').then( m => m.ConsumoApiPageModule)
+  },
 ];
 
 @NgModule({
