@@ -3,17 +3,17 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: 'consumo-api',
+    loadChildren: () => import('./pages/consumo-api/consumo-api.module').then(m => m.ConsumoApiPageModule)
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'consumo-api', // Cambia la ruta de redirección a 'consumo-api'
     pathMatch: 'full'
   },
   {
-    path: 'consumo-api',
-    loadChildren: () => import('./pages/consumo-api/consumo-api.module').then( m => m.ConsumoApiPageModule)
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
 ];
 
@@ -23,4 +23,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
+
