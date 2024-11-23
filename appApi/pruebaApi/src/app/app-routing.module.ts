@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'consumo-api', // Cambia la ruta de redirección a 'consumo-api'
+    redirectTo: 'consumo-api',
     pathMatch: 'full'
   },
   {
