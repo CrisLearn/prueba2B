@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,4 +25,14 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(){
+    this.showSplash();
+  }
+  async showSplash(){
+    await SplashScreen.show({
+      autoHide: true,
+      showDuration: 3000
+    });
+  }
+}
